@@ -1,0 +1,30 @@
+{
+  "name": "subtitlesanywhere",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "create-chrome-extension": "./bin/create-chrome-extension.js"
+  },
+  "scripts": {
+    "dev": "vite --port 3000 --open popup.html",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "type-check": "vue-tsc --noEmit"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "vue": "^3.5.8"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.272",
+    "@vitejs/plugin-vue": "^5.1.4",
+    "@vue/tsconfig": "^0.5.1",
+    "typescript": "^5.6.2",
+    "vite": "^5.4.8",
+    "vite-plugin-chrome-extension": "^0.0.7",
+    "vue-tsc": "^2.1.6"
+  }
+}

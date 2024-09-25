@@ -1,20 +1,28 @@
 {
-  "name": "subtitlesanywhere",
+  "name": "create-chrome-extension-vue",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "description": "CLI tool to create a new Chrome extension project in Vue 3",
+  "main": "bin/create-chrome-extension-vue.js",
+  "bin": {
+    "create-chrome-extension-vue": "./bin/create-chrome-extension-vue.js"
   },
-  "keywords": [],
+  "scripts": {
+    "start": "node bin/create-chrome-extension-vue.js"
+  },
+  "keywords": [
+    "chrome",
+    "extension",
+    "cli",
+    "generator"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@vue/compiler-sfc": "^3.5.8",
-    "vue": "^3.5.8"
+    "fs-extra": "^10.0.0",
+    "inquirer": "^11.0.2"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^5.0.8",
-    "@vue/cli-service": "^5.0.8"
+    "@types/node": "^16.11.12",
+    "typescript": "^4.5.4"
   }
 }
