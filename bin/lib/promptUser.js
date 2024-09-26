@@ -24,6 +24,12 @@ async function promptUser() {
     },
     {
       type: 'list',
+      name: 'browser',
+      message: 'Is this extension for Chrome or Firefox?',
+      choices: ['Chrome', 'Firefox']
+    },
+    {
+      type: 'list',
       name: 'language',
       message: 'Choose your language:',
       choices: ['TypeScript', 'JavaScript'],

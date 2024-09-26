@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "My Vue Extension",
+  "version": "1.0.0",
+  "description": "A Vue.js Browser Extension boilerplate",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "assets/favicons/favicon-16x16.png",
+      "48": "assets/favicons/favicon-32x32.png"
+    }
+  },
+  "permissions": [],
+  "background": {
+    "service_worker": "background.js"
+  }
+}

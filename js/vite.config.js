@@ -1,9 +1,20 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
+import fs from 'fs-extra';
 
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [
+    vue(),
+    {
+      name: 'copy-assets',
+      async writeBundle() {
+        // Copy favicons
+        await fs.copy('src/assets', 'dist/assets/favicons');
+   
+       },
+    },
+  ],
   build: {
     rollupOptions: {
       input: {
@@ -13,9 +24,11 @@ export default defineConfig({
         content: resolve(__dirname, 'src/content/content.js')
       },
       output: {
-        entryFileNames: '[name].js',
-        chunkFileNames: '[name].js',
-        assetFileNames: '[name].[ext]'
+        entryFileNames: (chunkInfo) => {
+          return chunkInfo.name === 'background' ? '[name].js' : 'js/[name].js';
+        },
+        chunkFileNames: 'js/[name].[hash].js',
+        assetFileNames: 'assets/[name].[ext]'
       }
     }
   }
