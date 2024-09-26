@@ -1,6 +1,6 @@
-# Create Browser Extension Vue
+# VueCreateBrowserExtension
 
-Create Browser Extension is a powerful CLI tool that helps you quickly set up a new browser extension project using Vue 3 and Vite. It offers a streamlined development experience with the option to choose between JavaScript and TypeScript, as well as the choice to create an extension for either Firefox or Chrome.
+VueCreateBrowserExtension is a powerful CLI tool that helps you quickly set up a new browser extension project using Vue 3 and Vite. It offers a streamlined development experience with the option to choose between JavaScript and TypeScript, as well as the choice to create an extension for either Firefox or Chrome.
 
 
 ## Getting Started

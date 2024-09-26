@@ -1,13 +1,13 @@
 {
-  "name": "create-chrome-extension-vue",
+  "name": "vue-create-browser-extension",
   "version": "1.0.0",
-  "description": "CLI tool to create a new Chrome extension project in Vue 3",
+  "description": "CLI tool to create a new browser extension project in Vue 3",
   "main": "bin/create-chrome-extension-vue.js",
   "bin": {
-    "create-chrome-extension-vue": "./bin/create-chrome-extension-vue.js"
+    "vue-create-browser-extension": "./bin/vue-create-browser-extension.js"
   },
   "scripts": {
-    "start": "node bin/create-chrome-extension-vue.js"
+    "start": "node bin/vue-create-browser-extension.js"
   },
   "keywords": [
     "chrome",

@@ -9,8 +9,8 @@ const { execSync } = require('child_process');
 
 async function main() {
    
-  console.log( '\x1b[32m%s\x1b[0m', '\ncreate-chrome-extension-vue:'  + "version: " + packageJson.version);
-  console.log('Creating your Chrome extension project...\n');
+  console.log( '\x1b[32m%s\x1b[0m', '\vue-create-browser-extension:'  + "version: " + packageJson.version);
+  console.log('Creating your browser extension project...\n');
 
   const answers = await promptUser();
   const projectDir = await setupProject(answers);
@@ -24,7 +24,7 @@ async function main() {
   await initGitRepo(projectDir);
   await updateManifestVersion(projectDir, answers.browser);
 
-  console.log('\x1b[32m%s\x1b[0m',`\nChrome extension project "${answers.appName}" created successfully!\n`);
+  console.log('\x1b[32m%s\x1b[0m',`\n ${answers.browser} extension project "${answers.appName}" created successfully!\n`);
   console.log("Now installing dependencies")
   process.chdir(projectDir);
   execSync('npm install', { stdio: 'inherit' });

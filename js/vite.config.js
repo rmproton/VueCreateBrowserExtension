@@ -11,7 +11,21 @@ export default defineConfig({
       async writeBundle() {
         // Copy favicons
         await fs.copy('src/assets', 'dist/assets/favicons');
-   
+             // Process and copy HTML files
+        
+        // Process and copy HTML files
+        const htmlFiles = ['popup.html', 'options.html'];
+        for (const file of htmlFiles) {
+          let content = await fs.readFile(`public/${file}`, 'utf-8');
+          // Replace script src with the correct path
+          content = content.replace(
+            /<script.*src=["'](.*)["'].*><\/script>/,
+            `<script type="module" src="js/${file.split('.')[0]}.js"></script>`
+          );
+          await fs.writeFile(`dist/${file}`, content);
+        }
+
+
        },
     },
   ],
