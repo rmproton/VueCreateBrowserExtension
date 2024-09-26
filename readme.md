@@ -1,4 +1,4 @@
-# Create Chrome Extension
+# Create Chrome Extension Vue
 
 Create Chrome Extension is a powerful CLI tool that helps you quickly set up a new Chrome extension project using Vue 3 and Vite. It offers a streamlined development experience with the option to choose between JavaScript and TypeScript.
 
