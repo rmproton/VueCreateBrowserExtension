@@ -32,8 +32,8 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        popup: resolve(__dirname, 'public/popup.html'),
-        options: resolve(__dirname, 'public/options.html'),
+        popup: resolve(__dirname, 'src/popup/main.js'),
+        options: resolve(__dirname, 'src/options/main.js'),
         background: resolve(__dirname, 'src/background/background.js'),
         content: resolve(__dirname, 'src/content/content.js')
       },

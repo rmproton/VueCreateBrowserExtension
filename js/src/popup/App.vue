@@ -9,7 +9,7 @@ export default {
   name: 'App',
   data() {
     return {
-      message: 'Hello, Chrome Extension!'
+      message: 'Hello, Chrome Extension! This is your popup'
     }
   }
 }

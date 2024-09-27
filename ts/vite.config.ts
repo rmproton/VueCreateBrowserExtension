@@ -31,22 +31,28 @@ export default defineConfig({
       },
     },
   ],
+  define: {
+    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'production'),
+  },
   build: {
+    lib: {
+      entry: '',
+      formats: ['es']
+    },
     rollupOptions: {
       input: {
-        popup: resolve(__dirname, 'public/popup.html'),
-        options: resolve(__dirname, 'public/options.html'),
+        popup: resolve(__dirname, 'src/popup/main.ts'),
+        options: resolve(__dirname, 'src/options/main.ts'),
         background: resolve(__dirname, 'src/background/background.ts'),
         content: resolve(__dirname, 'src/content/content.ts')
       },
       output: {
         entryFileNames: (chunkInfo) => {
-          return chunkInfo.name === 'background' ? '[name].js' : 'ts/[name].ts';
+          return chunkInfo.name === 'background' ? '[name].js' : 'js/[name].js';
         },
-        chunkFileNames: 'js/[name].[hash].ts',
+        chunkFileNames: 'js/[name].[hash].js',
         assetFileNames: 'assets/[name].[ext]'
       }
     }
   }
 })
-
