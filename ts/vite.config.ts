@@ -7,12 +7,14 @@ export default defineConfig({
   plugins: [
     vue(),
     {
-      name: 'copy-assets',
-      async writeBundle() {
+      name: 'copy-and-transform-html',
+      async writeBundle(options, bundle) {
         // Copy favicons
         await fs.copy('src/assets', 'dist/assets/favicons');
-
-       
+        
+        // Find the generated CSS file
+        const cssFile = Object.keys(bundle).find(fileName => fileName.endsWith('.css'));
+        
         // Process and copy HTML files
         const htmlFiles = ['popup.html', 'options.html'];
         for (const file of htmlFiles) {
@@ -22,23 +24,30 @@ export default defineConfig({
             /<script.*src=["'](.*)["'].*><\/script>/,
             `<script type="module" src="js/${file.split('.')[0]}.js"></script>`
           );
+          
+          if (cssFile) {
+            // Add link to CSS file
+            content = content.replace(
+              '</head>',
+              `  <link rel="stylesheet" href="${cssFile}">\n</head>`
+            );
+          }
+          
           await fs.writeFile(`dist/${file}`, content);
         }
-
-
-
-
       },
     },
   ],
   define: {
     'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'production'),
   },
+ 
   build: {
     lib: {
       entry: '',
       formats: ['es']
     },
+    cssCodeSplit: false,
     rollupOptions: {
       input: {
         popup: resolve(__dirname, 'src/popup/main.ts'),

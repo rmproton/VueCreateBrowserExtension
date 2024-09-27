@@ -7,11 +7,13 @@ export default defineConfig({
   plugins: [
     vue(),
     {
-      name: 'copy-assets',
-      async writeBundle() {
+      name: 'copy-and-transform-html',
+      async writeBundle(options, bundle) {
         // Copy favicons
         await fs.copy('src/assets', 'dist/assets/favicons');
-             // Process and copy HTML files
+        
+        // Find the generated CSS file
+        const cssFile = Object.keys(bundle).find(fileName => fileName.endsWith('.css'));
         
         // Process and copy HTML files
         const htmlFiles = ['popup.html', 'options.html'];
@@ -22,11 +24,18 @@ export default defineConfig({
             /<script.*src=["'](.*)["'].*><\/script>/,
             `<script type="module" src="js/${file.split('.')[0]}.js"></script>`
           );
+          
+          if (cssFile) {
+            // Add link to CSS file
+            content = content.replace(
+              '</head>',
+              `  <link rel="stylesheet" href="${cssFile}">\n</head>`
+            );
+          }
+          
           await fs.writeFile(`dist/${file}`, content);
         }
-
-
-       },
+      },
     },
   ],
   build: {
@@ -44,6 +53,8 @@ export default defineConfig({
         chunkFileNames: 'js/[name].[hash].js',
         assetFileNames: 'assets/[name].[ext]'
       }
-    }
+    },
+    cssCodeSplit: false, // This ensures a single CSS file is generated
+    sourcemap: true,
   }
 })
