@@ -12,8 +12,7 @@ export default defineConfig({
         // Copy favicons
         await fs.copy('src/assets', 'dist/assets/favicons');
         
-        // Find the generated CSS file
-        const cssFile = Object.keys(bundle).find(fileName => fileName.endsWith('.css'));
+ 
         
         // Process and copy HTML files
         const htmlFiles = ['popup.html', 'options.html'];
@@ -23,6 +22,11 @@ export default defineConfig({
           content = content.replace(
             /<script.*src=["'](.*)["'].*><\/script>/,
             `<script type="module" src="js/${file.split('.')[0]}.js"></script>`
+          );
+          
+          // Find the corresponding CSS file
+          const cssFile = Object.keys(bundle).find(fileName => 
+            fileName.endsWith('.css') && fileName.includes(file.split('.')[0])
           );
           
           if (cssFile) {
@@ -47,7 +51,7 @@ export default defineConfig({
       entry: '',
       formats: ['es']
     },
-    cssCodeSplit: false,
+    cssCodeSplit: true, // Enable CSS code splitting
     rollupOptions: {
       input: {
         popup: resolve(__dirname, 'src/popup/main.ts'),
@@ -60,7 +64,12 @@ export default defineConfig({
           return chunkInfo.name === 'background' ? '[name].js' : 'js/[name].js';
         },
         chunkFileNames: 'js/[name].[hash].js',
-        assetFileNames: 'assets/[name].[ext]'
+        assetFileNames: ({name}) => {
+          if (/\.css$/.test(name ?? '')) {
+            return 'css/[name].[ext]';
+          }
+          return 'assets/[name].[ext]';
+        }
       }
     }
   }
