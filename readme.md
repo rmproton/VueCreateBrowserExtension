@@ -7,6 +7,7 @@ VueCreateBrowserExtension is a powerful CLI tool that helps you quickly set up a
 
 To create a new browser extension project with Vue 3, run the following command:
 
+- npm i vue-create-browser-extension
 - npx vue-create-browser-extension
  
 or do
