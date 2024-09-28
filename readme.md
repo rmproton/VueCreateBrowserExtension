@@ -1,6 +1,20 @@
 ![Alt text](https://i.ibb.co/vLL1Vd2/Untitled-1.png)
 
-VueCreateBrowserExtension is a powerful CLI tool that helps you quickly set up a new browser extension project using Vue 3 and Vite. It offers a streamlined development experience with the option to choose between JavaScript and TypeScript, as well as the choice to create an extension for either Firefox or Chrome.
+VueCreateBrowserExtension is a powerful CLI tool designed to streamline the process of setting up a new browser extension project. Here's what it offers:
+
+- Quick setup using Vue 3 and Vite
+- Streamlined development experience
+- Choice between JavaScript and TypeScript
+- Flexibility to create extensions for:
+  - Firefox (using Manifest V2)
+  - Any Chromium-based browsers (using Manifest V3) such as: 
+    - Google Chrome
+    - Microsoft Edge
+    - Opera
+    - Brave
+    - Vivaldi
+
+This allows developers to target their preferred browser ecosystem based on the chosen manifest version, providing a versatile solution for browser extension development.
 
 
 ## Getting Started
@@ -40,19 +54,22 @@ project-root/
 │   ├── content/
 │   │   └── content.ts
 │   ├── options/
-│   │   └── options.ts
+│   │   ├── Options.vue
+│   │   └── main.ts
 │   └── popup/
-│   │    └── popup.ts
+│   │    ├── Popup.vue
+│   │    └── main.ts
 │   └── assets/
 │       ├── favicon-16x16.png
 │       └── favicon-32x32.png
 ├── public/
+│   ├── manifest.json
+│   ├── options.html
 │   └── popup.html
 ├── package.json
 ├── package-lock.json
 ├── tsconfig.json
 ├── env.d.ts
-├── manifest.json
 └── vite.config.ts
 ```
 
@@ -66,18 +83,21 @@ project-root/
 │   ├── content/
 │   │   └── content.js
 │   ├── options/
-│   │   └── options.js
+│   │   ├── Options.vue
+│   │   └── main.js
 │   └── popup/
-│   │    └── popup.js
+│   │    ├── Popup.vue
+│   │    └── main.js
 │   └── assets/
 │       ├── favicon-16x16.png
 │       └── favicon-32x32.png
 ├── public/
+│   ├── manifest.json
+│   ├── options.html
 │   └── popup.html
 ├── package.json
 ├── package-lock.json
-├── manifest.json
-├── jsconfig.json
+├── readme.md
 └── vite.config.js
 ```
  
