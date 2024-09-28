@@ -1,6 +1,7 @@
 <template>
-  <div id="app">
-    <h1>{{ message }}</h1>
+  <div>
+    <img src="../assets/logo.png" alt="Logo" class="logo">
+    <h3>Here is your options page, have fun implementing your ideas!</h3>
   </div>
 </template>
 
@@ -21,5 +22,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.logo {
+  width: 300px;
 }
 </style>

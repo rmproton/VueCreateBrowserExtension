@@ -1,18 +1,22 @@
 <template>
-  <div id="app">
+  <div >
+    <!-- 
+      Note: Everything in this template is purely placeholder content.
+      Feel free to remove or modify all elements as needed for your specific extension.
+    -->
     <header>
-      <h1>{{ title }}</h1>
+      <div class="logo-container">
+        <img src="../assets/logo.png" alt="Logo" class="logo">
+        <small>Version: {{ version }}</small>
+      </div>
     </header>
     <main>
       <p>{{ description }}</p>
       <div class="button-container">
-        <button @click="openOptions">Options</button>
-        <button @click="toggleFeature">{{ featureEnabled ? 'Disable' : 'Enable' }} Feature</button>
+        <button @click="openOptions">Options page</button>
       </div>
     </main>
-    <footer>
-      <p>Version: {{ version }}</p>
-    </footer>
+   
   </div>
 </template>
 
@@ -21,77 +25,105 @@ export default {
   name: 'App',
   data() {
     return {
-      title: 'My Awesome Extension',
       description: 'Welcome to your new browser extension! This boilerplate is ready for you to customize and build upon.',
-      version: '1.0.0',
-      featureEnabled: false
+      version: '1.0.0'
     }
   },
   methods: {
+    // placeholder function remove if not needed 
     openOptions() {
-      // Logic to open options page
-      console.log('Opening options page')
-    },
-    toggleFeature() {
-      this.featureEnabled = !this.featureEnabled
-      console.log(`Feature ${this.featureEnabled ? 'enabled' : 'disabled'}`)
+      if (window.location.hostname === 'localhost') {
+        window.location.href = '/options.html';
+      } else {
+        chrome.runtime.openOptionsPage();
+      }
     }
   }
 }
 </script>
 
 <style>
+
+body, html {
+  width: 400px;
+  height: 300px;
+  margin: 0;
+  border: solid 1px #eee;
+  padding: 0;
+  display: flex;
+  overflow: hidden;
+}
+
 #app {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Arial', sans-serif;
   color: #333;
-  width: 300px;
-  padding: 20px;
-  background-color: #f5f5f5;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  padding: 24px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
 header {
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 h1 {
-  color: #4a90e2;
-  font-size: 24px;
+  color: #2c3e50;
+  font-size: 28px;
+  font-weight: 600;
   margin: 0;
 }
 
 main {
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 p {
-  line-height: 1.5;
+  line-height: 1.6;
+  color: #4a4a4a;
 }
 
 .button-container {
   display: flex;
   justify-content: space-between;
-  margin-top: 15px;
+  margin-top: 20px;
 }
 
 button {
-  background-color: #4a90e2;
+  background-color: #3498db;
   color: white;
   border: none;
-  padding: 10px 15px;
-  border-radius: 4px;
+  padding: 12px 18px;
+  border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  font-size: 14px;
 }
 
 button:hover {
-  background-color: #3a7bc8;
+  background-color: #2980b9;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 footer {
   font-size: 12px;
-  color: #888;
+  color: #7f8c8d;
   text-align: center;
 }
+
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.logo { 
+  width: 300px;
+} 
 </style>
