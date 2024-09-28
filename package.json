@@ -1,6 +1,6 @@
 {
   "name": "vue-create-browser-extension",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "CLI tool to create a new browser extension project in Vue 3",
   "main": "bin/create-chrome-extension-vue.js",
   "bin": {

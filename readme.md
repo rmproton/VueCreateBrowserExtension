@@ -21,16 +21,8 @@ This allows developers to target their preferred browser ecosystem based on the 
 
 To create a new browser extension project with Vue 3, run the following command:
 
-- npm i vue-create-browser-extension
-- npx vue-create-browser-extension
+ - npx vue-create-browser-extension
  
-or do
-
-- npm i vue-create-browser-extension -g
-- vue-create-browser-extension start
- 
-
-
 ## Features
 
 - Quick project setup for Chrome or Firefox extensions
