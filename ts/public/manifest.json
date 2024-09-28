@@ -11,8 +11,8 @@
     }
   },
   "icons": {
-    "16": "assets/favicon-16x16.png",
-    "48": "assets/favicon-32x32.png"
+    "16": "assets/favicons/favicon-16x16.png",
+    "48": "assets/favicons/favicon-32x32.png"
   },
   "options_page": "options.html",
   "permissions": [],
